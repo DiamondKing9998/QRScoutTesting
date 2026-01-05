@@ -1,6 +1,6 @@
 {
   "title": "6753 Scouting",
-  "page_title": "Reefscape",
+  "page_title": "2025 Reefscape",
   "delimiter": "\t",
   "teamNumber": 6753,
   "floatingField": {
@@ -70,7 +70,7 @@
           "description": "Enter the initials of the scouter.",
           "type": "text",
           "required": true,
-          "code": "scouter",
+          "code": "scouterInitials",
           "formResetBehavior": "preserve",
           "defaultValue": ""
         },
@@ -88,7 +88,7 @@
           "description": "The robot you are scouting this match, based on driver station position.",
           "type": "select",
           "required": true,
-          "code": "robot",
+          "code": "robotColorNumber",
           "formResetBehavior": "preserve",
           "defaultValue": "R1",
           "choices": {
@@ -107,7 +107,7 @@
           "required": true,
           "code": "teamNumber",
           "formResetBehavior": "reset",
-          "defaultValue": 0,
+          "defaultValue": 6753,
           "min": 0,
           "max": 19999
         },
@@ -116,13 +116,13 @@
           "description": "The starting position of the robot.",
           "type": "select",
           "required": true,
-          "code": "Prsp",
+          "code": "startingPos",
           "formResetBehavior": "reset",
           "defaultValue": "",
           "choices": {
-            "R1": "Processor Side",
-            "R2": "Middle",
-            "R3": "Non-Processor Side"
+            "ProcessorSide": "Processor Side",
+            "Middle": "Middle",
+            "NonProcessorSide": "Non-Processor Side"
           }
         },
         {
@@ -139,12 +139,12 @@
           "description": "The starting level of the cage",
           "type": "select",
           "required": true,
-          "code": "CPos",
+          "code": "cagePos",
           "formResetBehavior": "reset",
           "defaultValue": "",
           "choices": {
-            "SP1": "High",
-            "SP2": "Low"
+            "Shallow": "Shalow",
+            "Deep": "Deep"
           }
         }
       ]
@@ -157,26 +157,16 @@
           "description": "Check if the robot moved during autonomous.",
           "type": "boolean",
           "required": false,
-          "code": "Mved",
+          "code": "autonMoved",
           "formResetBehavior": "reset",
           "defaultValue": false
-        },
-        {
-          "title": "Timer",
-          "description": "The time it took for the robot to finish autonomous.",
-          "type": "timer",
-          "required": false,
-          "code": "timer",
-          "formResetBehavior": "reset",
-          "defaultValue": 0,
-          "outputType": "average"
         },
         {
           "title": "Coral L1 Scored",
           "description": "The number of level 1 coral scored during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "CLOA",
+          "code": "autonCoralL1",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
@@ -187,7 +177,7 @@
           "description": "The number of level 2 coral scored during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "CLTA",
+          "code": "autonCoralL2",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
@@ -198,7 +188,7 @@
           "description": "The number of level 3 coral scored during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "CLThA",
+          "code": "autonCoralL3",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
@@ -209,7 +199,7 @@
           "description": "The number of level 4 coral scored during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "CLFA",
+          "code": "autonCoralL4",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
@@ -220,7 +210,7 @@
           "description": "The number of Algae scored in the barge during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "BASA",
+          "code": "autonBargeAlgae",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
@@ -231,7 +221,7 @@
           "description": "The number of Algae scored in the processor during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "PASA",
+          "code": "autonProcessorAlgae",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
@@ -241,7 +231,7 @@
           "title": "Intentionally Removed Algae?",
           "type": "boolean",
           "required": false,
-          "code": "dto",
+          "code": "autonIntentionallyRemovedAlgae",
           "formResetBehavior": "reset",
           "defaultValue": false
         },
@@ -249,7 +239,7 @@
           "title": "Auto Foul",
           "type": "counter",
           "required": false,
-          "code": "auf",
+          "code": "autoFoul",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
@@ -264,7 +254,7 @@
           "title": "Intentionally Removed Algae?",
           "type": "boolean",
           "required": false,
-          "code": "daT",
+          "code": "intentionallyRemovedAlgae",
           "formResetBehavior": "reset",
           "defaultValue": false
         },
@@ -276,10 +266,10 @@
           "formResetBehavior": "reset",
           "defaultValue": "",
           "choices": {
-            "1": "None",
-            "2": "Ground",
-            "3": "Human Player",
-            "4": "Both"
+            "None": "None",
+            "Ground": "Ground",
+            "HumanPlayer": "Human Player",
+            "Both": "Both"
           }
         },
         {
@@ -287,7 +277,7 @@
           "description": "The number of level 1 coral scored during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "CLOT",
+          "code": "teleopCoralL1",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
@@ -298,7 +288,7 @@
           "description": "The number of level 2 coral scored during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "CLTT",
+          "code": "teleopCoralL2",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
@@ -309,7 +299,7 @@
           "description": "The number of level 3 coral scored during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "CLThT",
+          "code": "teleopCoralL3",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
@@ -320,7 +310,7 @@
           "description": "The number of level 4 coral scored during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "CLFT",
+          "code": "teleopCoralL4",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
@@ -331,7 +321,7 @@
           "description": "The number of Algae scored in the barge during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "BAST",
+          "code": "teleopBargeAlgae",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
@@ -342,7 +332,7 @@
           "description": "The number of Algae scored in the processor during autonomous.",
           "type": "counter",
           "required": false,
-          "code": "PAST",
+          "code": "teleopProcessorAlgae",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
@@ -352,7 +342,7 @@
           "title": "Crossed Field/Played Defense?",
           "type": "boolean",
           "required": false,
-          "code": "CFPDT",
+          "code": "defensePlayed",
           "formResetBehavior": "reset",
           "defaultValue": false
         },
@@ -360,7 +350,7 @@
           "title": "Was Robot Defended by Other Alliance?",
           "type": "boolean",
           "required": false,
-          "code": "DEFEg",
+          "code": "defenseReceived",
           "formResetBehavior": "reset",
           "defaultValue": false
         },
@@ -368,7 +358,7 @@
           "title": "Touched Opposing Cage?",
           "type": "counter",
           "required": false,
-          "code": "Fou/Tech",
+          "code": "cageFoul",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "step": 1
@@ -386,18 +376,18 @@
           "formResetBehavior": "reset",
           "defaultValue": "No",
           "choices": {
-            "No": "Not Parked",
-            "P": "Parked",
-            "Sc": "High Hang",
-            "Dc": "Low Hang",
-            "Fc": "Failed Hang"
+            "N/A": "Not Parked",
+            "Park": "Parked",
+            "Shallow": "Shallow Hang",
+            "Deep": "Deep Hang",
+            "Attempted": "Failed Hang"
           }
         },
         {
           "title": "Died?",
           "type": "boolean",
           "required": false,
-          "code": "DEg",
+          "code": "died",
           "formResetBehavior": "reset",
           "defaultValue": false
         },
@@ -405,7 +395,7 @@
           "title": "Tipped/Fell Over?",
           "type": "boolean",
           "required": false,
-          "code": "TFOT",
+          "code": "tippedOrFellOver",
           "formResetBehavior": "reset",
           "defaultValue": false
         }
@@ -418,7 +408,7 @@
           "title": "Offense Skill",
           "type": "range",
           "required": false,
-          "code": "or",
+          "code": "offenseSkill",
           "formResetBehavior": "reset",
           "defaultValue": 3,
           "min": 1,
@@ -429,7 +419,7 @@
           "title": "Defensive Skill",
           "type": "range",
           "required": false,
-          "code": "dr",
+          "code": "defenseSkill",
           "formResetBehavior": "reset",
           "defaultValue": 0,
           "min": 0,
@@ -440,11 +430,11 @@
           "title": "Yellow/Red Card",
           "type": "select",
           "required": true,
-          "code": "yc",
+          "code": "yellowOrRedCard",
           "formResetBehavior": "reset",
           "defaultValue": "No Card",
           "choices": {
-            "No Card": "No Card",
+            "NoCard": "No Card",
             "Yellow": "Yellow Card",
             "Red": "Red Card"
           }
@@ -453,7 +443,7 @@
           "title": "Comments",
           "type": "text",
           "required": false,
-          "code": "co",
+          "code": "comments",
           "formResetBehavior": "reset",
           "defaultValue": "",
           "min": 0,
