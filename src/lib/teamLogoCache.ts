@@ -4,7 +4,7 @@ const teamLogoCache: Record<number, string | null> = {};
 import { getTeamLogoUrl } from './teamLogo';
 
 // Use a generic FIRST logo as fallback (using a public icon as placeholder)
-const GENERIC_FIRST_LOGO = '/icons/first-generic.png';
+const GENERIC_FIRST_LOGO = 'QRScoutTesting/icons/first-generic.png';
 
 export async function getCachedTeamLogo(teamNumber: number): Promise<string> {
   if (teamLogoCache[teamNumber] !== undefined) {
