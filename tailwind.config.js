@@ -9,7 +9,7 @@ module.exports = {
 					'sans-serif'
 				],
 				twitchy: [
-					'Twitchy.TV',
+					'TwitchyTV',
 					'sans-serif'
 				]
 			},
