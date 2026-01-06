@@ -10,7 +10,7 @@ export function Section(props: SectionProps) {
     <Card>
       <CardHeader>
         {props.title && (
-          <CardTitle className="font-twitchy">{props.title}</CardTitle>
+          <CardTitle className="font-twitchy flex items-center">{props.title}</CardTitle>
         )}
       </CardHeader>
       <CardContent className="p-2 pt-0">

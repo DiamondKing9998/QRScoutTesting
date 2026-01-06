@@ -38,7 +38,7 @@ export function QRModal(props: QRModalProps) {
         </Button>
       </DialogTrigger>
       <DialogContent className="h-[95%]">
-        <DialogTitle className="text-3xl text-primary text-center font-twitchy tracking-wider ">
+        <DialogTitle className="text-3xl text-primary text-center font-twitchy tracking-wider flex items-center justify-center ">
           {title}
         </DialogTitle>
         <div className="flex flex-col items-center gap-6 overflow-y-scroll">

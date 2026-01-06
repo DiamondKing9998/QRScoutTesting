@@ -54,15 +54,18 @@ export function FloatingFormValue() {
         (showField ? "block" : "hidden");
 
     return (
-        <div className={className} style={{ display: 'flex', alignItems: 'center' }}>
+        <div
+            className={className}
+            style={{ display: 'flex', alignItems: 'center', height: 40, minHeight: 40 }}
+        >
             {teamLogo && (
                 <img
                     src={teamLogo}
                     alt="Team Logo"
-                    style={{ width: 32, height: 32, objectFit: 'contain', marginRight: 12, background: logoBg, borderRadius: 6 }}
+                    style={{ width: 32, height: 32, objectFit: 'contain', marginRight: 12, background: logoBg, borderRadius: 6, display: 'block' }}
                 />
             )}
-            <span>
+            <span style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
                 {teamNumber}
                 {teamName && (
                     <span style={{ marginLeft: 8, fontWeight: 500 }}>
