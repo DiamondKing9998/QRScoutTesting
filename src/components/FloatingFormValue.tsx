@@ -9,7 +9,15 @@ export function FloatingFormValue() {
         showField: state.formData.floatingField.show,
         codeValue: state.formData.floatingField.codeValue
     }));
-    const teamNumber = useQRScoutState(state => state.fieldValues).filter(f => f.code === codeValue)[0]?.value;
+    const fieldValues = useQRScoutState(state => state.fieldValues);
+    const teamNumber = fieldValues.filter(f => f.code === codeValue)[0]?.value;
+    // Find robot color (robotColorNumber field)
+    const robotColorValue = fieldValues.find(f => f.code === 'robotColorNumber')?.value || '';
+    let logoBg = '#fff';
+    if (typeof robotColorValue === 'string') {
+        if (robotColorValue.startsWith('R')) logoBg = '#d32f2f'; // Red
+        if (robotColorValue.startsWith('B')) logoBg = '#1976d2'; // Blue
+    }
     const [teamName, setTeamName] = React.useState<string>("");
     const [teamLogo, setTeamLogo] = React.useState<string>("");
 
@@ -42,7 +50,7 @@ export function FloatingFormValue() {
     }, [teamNumber]);
 
     const className =
-        "sticky top-5 w-1/2 sm:w-full space-y-1.5 p-2 bg-primary mb-2 rounded-xl leading-none text-primary-foreground font-rhr-ns " +
+        "sticky top-5 w-1/2 sm:w-full space-y-1.5 p-2 bg-primary mb-2 rounded-xl leading-none text-primary-foreground font-twitchy " +
         (showField ? "block" : "hidden");
 
     return (
@@ -51,7 +59,7 @@ export function FloatingFormValue() {
                 <img
                     src={teamLogo}
                     alt="Team Logo"
-                    style={{ width: 32, height: 32, objectFit: 'contain', marginRight: 12, background: '#fff', borderRadius: 6 }}
+                    style={{ width: 32, height: 32, objectFit: 'contain', marginRight: 12, background: logoBg, borderRadius: 6 }}
                 />
             )}
             <span>

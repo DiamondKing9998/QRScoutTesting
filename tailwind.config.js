@@ -3,16 +3,16 @@ module.exports = {
   content: ['index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
   	extend: {
-  		fontFamily: {
-  			rhr: [
-  				'SF Sports Night',
-  				'sans-serif'
-  			],
-  			'rhr-ns': [
-  				'SF Sports Night NS',
-  				'sans-serif'
-  			]
-  		},
+			fontFamily: {
+				racing: [
+					'Racing',
+					'sans-serif'
+				],
+				twitchy: [
+					'Twitchy.TV',
+					'sans-serif'
+				]
+			},
   		colors: {
   			red: {
   				rhr: '#ef3340'
