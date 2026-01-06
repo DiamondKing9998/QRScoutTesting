@@ -15,8 +15,8 @@ body {
 }
 
 @font-face {
-  font-family: 'Twitchy.TV';
-  src: url('./assets/fonts/Twitchy.TV.ttf') format('truetype');
+  font-family: 'TwitchyTV';
+  src: url('./assets/fonts/TwitchyTV.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
