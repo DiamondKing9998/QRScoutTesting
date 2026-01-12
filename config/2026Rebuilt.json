@@ -120,9 +120,9 @@
                     "formResetBehavior": "reset",
                     "defaultValue": "",
                     "choices": {
-                        "R1": "Outpost Side",
-                        "R2": "Middle",
-                        "R3": "Depot Side"
+                        "Outpost": "Outpost Side",
+                        "Middle": "Middle",
+                        "Depot": "Depot Side"
                     }
                 },
                 {
@@ -160,6 +160,17 @@
                     "step": 1
                 },
                 {
+                    "title": "Fuel Dropped/Missed",
+                    "description": "Fuel shots that missed during auto",
+                    "type": "counter",
+                    "required": false,
+                    "code": "FDMA",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 0,
+                    "min": 0,
+                    "step": 1
+                },
+                {
                     "title": "Climbed Tower",
                     "description": "The height the robot climbed in auto",
                     "type": "select",
@@ -172,7 +183,7 @@
                         "L1": "Level 1",
                         "L2": "Level 2",
                         "L3": "Level 3",
-                        "F": "Failed Climb"
+                        "Fail": "Failed Climb"
                     }
                 },
                 {
@@ -229,6 +240,17 @@
                     "step": 1
                 },
                 {
+                    "title": "Fuel Dropped/Missed",
+                    "description": "Fuel dropped/missed during teleop",
+                    "type": "counter",
+                    "required": false,
+                    "code": "FDT",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 0,
+                    "min": 0,
+                    "step": 1
+                },
+                {
                     "title": "Crossed Field/Played Defense?",
                     "type": "boolean",
                     "required": false,
@@ -270,7 +292,7 @@
                         "L1": "Level 1",
                         "L2": "Level 2",
                         "L3": "Level 3",
-                        "F": "Failed Climb"
+                        "Fail": "Failed Climb"
                     }
                 },
                 {
@@ -288,6 +310,18 @@
                     "code": "TFOT",
                     "formResetBehavior": "reset",
                     "defaultValue": false
+                },
+                {
+                    "title": "Approx Accuracy (Endgame)",
+                    "description": "Estimated scoring accuracy for endgame actions (percentage)",
+                    "type": "range",
+                    "required": false,
+                    "code": "EAAcc",
+                    "formResetBehavior": "reset",
+                    "defaultValue": 50,
+                    "min": 0,
+                    "max": 100,
+                    "step": 5
                 },
                 {
                     "title": "Offense Skill",
