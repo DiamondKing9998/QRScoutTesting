@@ -24,13 +24,16 @@ function MainContent() {
           <div className="font-racing text-primary flex items-center">{pageTitle}</div>
         </h1>
         <FloatingFormValue />
-        <form className="w-full px-4" onSubmit={e => e.preventDefault()}>
-          <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-            <Sections />
-            <CommitAndResetSection />
-            <ConfigSection />
-          </div>
-        </form>
+            <form className="w-full px-4" onSubmit={e => e.preventDefault()}>
+              <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+                <Sections />
+              </div>
+
+              <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
+                <ConfigSection />
+                <CommitAndResetSection />
+              </div>
+            </form>
       </main>
       <Footer />
     </div>

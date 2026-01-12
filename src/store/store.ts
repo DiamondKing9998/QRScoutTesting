@@ -1,6 +1,6 @@
 import { produce } from 'immer';
 import { cloneDeep } from 'lodash';
-import configJson from '../../config/2025Reefscape.json';
+import configJson from '../../config/2026Rebuilt.json';
 import {
   Config,
   configSchema,
@@ -42,7 +42,7 @@ export const useQRScoutState = createStore<QRScoutState>(
   initialState,
   'qrScout',
   {
-    version: 2,
+    version: 3,
   },
 );
 

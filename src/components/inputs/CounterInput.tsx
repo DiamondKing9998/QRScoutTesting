@@ -1,8 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { useEvent } from '@/hooks';
 import { inputSelector, updateValue, useQRScoutState } from '@/store/store';
-import { Minus, Plus } from 'lucide-react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { CounterInputData } from './BaseInputProps';
 import { ConfigurableInputProps } from './ConfigurableInput';
 
@@ -61,15 +60,39 @@ export default function CounterInput(props: ConfigurableInputProps) {
     updateValue(props.code, value);
   }, [value]);
 
+  const increments = useMemo(() => Array.from({ length: 8 }, (_, i) => i + 1), []);
+
   return (
-    <div className="my-2 flex flex-row items-center justify-center">
-      <Button variant="outline" onClick={() => handleChange(-(data.step || 1))}>
-        <Minus />
-      </Button>
+    <div className="my-2 flex flex-col items-center gap-2">
+      <div className="flex flex-wrap justify-center gap-2">
+        {increments.map(inc => (
+          <Button
+            key={`dec-${inc}`}
+            variant="outline"
+            size="sm"
+            className="px-2 py-1 text-sm"
+            onClick={() => handleChange(-inc)}
+          >
+            -{inc}
+          </Button>
+        ))}
+      </div>
+
       <h2 className="px-4 text-2xl dark:text-white">{value}</h2>
-      <Button variant="outline" onClick={() => handleChange(data.step || 1)}>
-        <Plus />
-      </Button>
+
+      <div className="flex flex-wrap justify-center gap-2">
+        {increments.map(inc => (
+          <Button
+            key={`inc-${inc}`}
+            variant="outline"
+            size="sm"
+            className="px-2 py-1 text-sm"
+            onClick={() => handleChange(inc)}
+          >
+            +{inc}
+          </Button>
+        ))}
+      </div>
     </div>
   );
 }
