@@ -312,7 +312,7 @@
                     "defaultValue": false
                 },
                 {
-                    "title": "Approx Accuracy (Endgame)",
+                    "title": "Approx Accuracy",
                     "description": "Estimated scoring accuracy for endgame actions (percentage)",
                     "type": "range",
                     "required": false,
