@@ -1,6 +1,6 @@
-# QRScout (Enhanced)
+# QRScout (FRC 6753 CBA RoboKings Edition)
 
-Modernized QRScout with rebuilt UI, config, and Blue Alliance-powered helpers. This fork keeps the core QR-based workflow but adds scheduling, richer inputs, and easier config management.
+Modernized QRScout with rebuilt UI, config, and Blue Alliance-powered helpers. This fork keeps the core QR-based workflow but adds scheduling, richer inputs, and easier config management. Credit to FRC2713 for the original QRScout App. Link here: https://github.com/FRC2713/QRScout / frc2713.github.io/QRScout/
 
 ## Whats New vs Original QRScout
 - TBA schedule integration: Fetch event schedules with your API key, cache history, and reuse locally.
