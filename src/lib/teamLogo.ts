@@ -1,16 +1,22 @@
 // Utility to fetch team logo URL from The Blue Alliance API
 // Usage: getTeamLogoUrl(teamNumber: number): Promise<string | null>
 
+import { getCachedApiKey } from './blueAllianceApi';
+
 const BLUE_ALLIANCE_API_BASE = 'https://www.thebluealliance.com/api/v3';
-const BLUE_ALLIANCE_API_KEY = 'WECk4nqehq4gxN5LWHvG7KbYkKOswHtXwqrhH8tpoooVcyyN33UX6vnJBB8F10Q6';
 
 export async function getTeamLogoUrl(teamNumber: number): Promise<string | null> {
+  const apiKey = getCachedApiKey();
+  if (!apiKey) {
+    return null;
+  }
+
   const currentYear = new Date().getFullYear();
   // Only use the TBA media API (base64 avatar, CORS-safe)
   const url = `${BLUE_ALLIANCE_API_BASE}/team/frc${teamNumber}/media/${currentYear}`;
   const response = await fetch(url, {
     headers: {
-      'X-TBA-Auth-Key': BLUE_ALLIANCE_API_KEY,
+      'X-TBA-Auth-Key': apiKey,
     },
   });
   if (!response.ok) {

@@ -1,4 +1,5 @@
 import { QRModal } from '@/components/QR';
+import { ScheduleViewerModal } from '@/components/ScheduleViewerModal';
 import { useMemo } from 'react';
 import { useQRScoutState } from '../../../store/store';
 import { Section } from '../../core/Section';
@@ -25,6 +26,7 @@ export function CommitAndResetSection() {
   return (
     <Section>
       <QRModal disabled={missingRequiredFields} />
+      <ScheduleViewerModal />
       <ResetButton />
     </Section>
   );
