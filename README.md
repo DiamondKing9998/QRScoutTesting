@@ -1,15 +1,16 @@
 # QRScout (FRC 6753 CBA RoboKings Edition)
 
-Modernized QRScout with rebuilt UI, config, and Blue Alliance-powered helpers. This fork keeps the core QR-based workflow but adds scheduling, richer inputs, and easier config management. Credit to FRC2713 for the original QRScout App. Link here: https://github.com/FRC2713/QRScout / https://frc2713.github.io/QRScout/
+Modernized QRScout with rebuilt UI, config, and Blue Alliance-powered helpers. This fork keeps the core QR-based workflow but adds scheduling, richer inputs, and easier config management. Credit to FRC2713 for the original QRScout App. Links to the original app and GitHub repo can be found here:
+- https://github.com/FRC2713/QRScout
+- https://frc2713.github.io/QRScout/
 
-## Whats New vs Original QRScout
+## What's New vs Original QRScout
 - TBA schedule integration: Fetch event schedules with your API key, cache history, and reuse locally.
-- Floating info bar: Shows manual team (left) and schedule-based team for the selected robot slot + match (right); uses the fetched schedule and your API key.
+- Floating info bar: Shows team info for the manual team number input field (left) and the team for the selected robot color/position and match (right) via the qualification schedule associated with your event ID.
 - No hardcoded API keys: All TBA calls require the key you type or have cached from the schedule modal.
-- Multi-increment counters: 7 buttons for +18 and -18 to speed up cycle tracking.
-- Form layout updates: Commit/Reset row separated; first four columns stay pinned on top.
-- New scouting fields: Fuel dropped/missed (auto/teleop), Approx Accuracy slider, merged Endgame/Postmatch section, reordered prematch fields.
-- Config editor polish: Same in-browser editor, plus default config upgraded (`config/2026Rebuilt.json`).
+- Multi-increment counter fields : 8 new buttons for +1 through +8 and -1 through -8 to speed up cycle tracking (since bots can hold up to 8 fuel at once in REBUILT).
+- Form layout updates: Commit/Reset row separated; first four columns stay pinned on top (Pregame/Auton/Teleop/Endgame)
+- Config editor polish: Same in-browser editor, plus default config upgraded for REBULIT 2026 (`config/2026Rebuilt.json`).
 - Deployment ready: Vite 6 + gh-pages flow for GitHub Pages.
 
 ## Quick Start
@@ -25,28 +26,25 @@ Modernized QRScout with rebuilt UI, config, and Blue Alliance-powered helpers. T
   - Upload a local JSON or load from URL for team-specific configs.
   - Reset to default to reload `2026Rebuilt.json`; clear the `qrScout` localStorage key if you need a hard reset.
 - Schedule viewer (TBA)
-  - Open the schedule modal and enter your TBA API key and event ID, then **Fetch Schedule**.
+  - Open the schedule modal and enter your TBA API read key and event ID (ex. 2026micmp), then **Fetch Schedule**.
   - The key is stored locally; no keys ship in the repo. History keeps your recent schedules.
   - [Screenshot: Schedule modal with API key input, event ID, fetch + history]
 - Floating info bar
   - Left side: manual team number (from the form) with name/logo.
-  - Right side: team from the fetched schedule for the chosen robot position + match number.
+  - Right side: team from the fetched schedule, also with name/logo, for the chosen robot position + match number.
   - Requires a fetched schedule and your API key for names/logos.
   - [Screenshot: Floating bar showing left manual team and right schedule team]
 - Counters
-  - Each counter has quick buttons for 1..8 increments.
+  - Each counter has quick buttons for 1 through 8 increments/decrements.
   - [Screenshot: Counter with 7 buttons]
-- Endgame/Postmatch
-  - Includes Approx Accuracy slider (EAAcc), offense skill, and fuel tracking fields.
-- Commit/Reset
+- Commit/Resetd
   - **Commit** generates the QR payload for the current form.
-  - **Reset** clears fields based on each fields reset behavior (prematch values preserved where configured).
+  - **Reset** clears fields based on each field's reset behavior (prematch values preserved where configured).
 
 ## Config Notes
-- Schema-compatible with original QRScout; enhanced defaults live in `config/2026Rebuilt.json`.
-- Prematch order: ScouterName, Team#, Match#, Robot (color/pos), startingPos, noshow.
-- New field codes (examples): `EAAcc` (Approx Accuracy), `FDA/FMA/FDT/FMT` (fuel dropped/missed auto/teleop).
-- Counter inputs now render multiple increment buttons automatically.
+- The team number on the **LEFT** side of the floating info bar is the one that will be exported with your scouting data.
+- The team number on the **RIGHT** side of the floating info is simply there for QoL, making sure if you were assigned to a specific robot color/number, you can match your **LEFT** value with the auto-generated one on the **RIGHT**.
+
 
 ## Blue Alliance Key Handling
 - All TBA requests read the API key from localStorage (set via the schedule modal).
@@ -54,6 +52,5 @@ Modernized QRScout with rebuilt UI, config, and Blue Alliance-powered helpers. T
 - There are **no** hardcoded keys in the repo; each user must supply their own key.
 
 ## Troubleshooting
-- Missing Approx Accuracy or new fields: Reset to default config or clear the `qrScout` localStorage key and reload.
 - Schedule info not showing on the floating bar: Ensure you fetched a schedule and the match/robot position are set.
 - Names/logos missing: Confirm your TBA API key is set in the schedule modal.

@@ -1,6 +1,6 @@
 import { produce } from 'immer';
 import { cloneDeep } from 'lodash';
-import configJson from '../../config/2026Rebuilt.json';
+import configJson from '../../public/2026Rebuilt.json';
 import {
   Config,
   configSchema,
