@@ -1,12 +1,13 @@
 {
   "name": "QR Scout",
   "short_name": "QR Scout",
+  "description": "QR Scout scouting application for FRC",
   "theme_color": "#ffffff",
   "background_color": "#f03d41",
   "display": "fullscreen",
   "orientation": "portrait",
-  "scope": "/QRScout/",
-  "start_url": "/QRScout/",
+  "scope": "/QRScoutTesting/",
+  "start_url": "/QRScoutTesting/",
   "icons": [
     {
       "src": "icons/icon-36x36.png",
@@ -51,7 +52,8 @@
     {
       "src": "icons/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ],
   "splash_pages": null
