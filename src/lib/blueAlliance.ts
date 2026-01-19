@@ -1,15 +1,20 @@
 // Utility to fetch team names from The Blue Alliance API
 // Usage: getTeamName(teamNumber: number): Promise<string>
 
+import { getCachedApiKey } from './blueAllianceApi';
+
 const BLUE_ALLIANCE_API_BASE = 'https://www.thebluealliance.com/api/v3';
-// TODO: Replace with your actual Blue Alliance API key
-const BLUE_ALLIANCE_API_KEY = 'WECk4nqehq4gxN5LWHvG7KbYkKOswHtXwqrhH8tpoooVcyyN33UX6vnJBB8F10Q6';
 
 export async function getTeamName(teamNumber: number): Promise<string> {
+  const apiKey = getCachedApiKey();
+  if (!apiKey) {
+    throw new Error('No TBA API key available. Please set an API key in the schedule viewer.');
+  }
+
   const url = `${BLUE_ALLIANCE_API_BASE}/team/frc${teamNumber}`;
   const response = await fetch(url, {
     headers: {
-      'X-TBA-Auth-Key': BLUE_ALLIANCE_API_KEY,
+      'X-TBA-Auth-Key': apiKey,
     },
   });
   if (!response.ok) {

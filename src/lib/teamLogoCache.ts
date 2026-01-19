@@ -14,10 +14,19 @@ export async function getCachedTeamLogo(teamNumber: number): Promise<string> {
     return GENERIC_FIRST_LOGO;
   }
   try {
+    // Import getCachedApiKey dynamically to avoid circular dependencies
+    const { getCachedApiKey } = await import('./blueAllianceApi');
+    const apiKey = getCachedApiKey();
+    if (!apiKey) {
+      // No API key available, return generic logo
+      logoCache[teamNumber] = GENERIC_FIRST_LOGO;
+      return GENERIC_FIRST_LOGO;
+    }
+
     const year = new Date().getFullYear();
     const url = `https://www.thebluealliance.com/api/v3/team/frc${teamNumber}/media/${year}`;
     const response = await fetch(url, {
-      headers: { 'X-TBA-Auth-Key': 'WECk4nqehq4gxN5LWHvG7KbYkKOswHtXwqrhH8tpoooVcyyN33UX6vnJBB8F10Q6' },
+      headers: { 'X-TBA-Auth-Key': apiKey },
     });
     if (!response.ok) throw new Error('TBA fetch failed');
     const data = await response.json();
