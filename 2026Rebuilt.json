@@ -181,8 +181,6 @@
 					"choices": {
 						"No": "Didn't Climb",
 						"L1": "Level 1",
-						"L2": "Level 2",
-						"L3": "Level 3",
 						"Fail": "Failed Climb"
 					}
 				},
@@ -202,53 +200,41 @@
 			"name": "Teleop",
 			"fields": [
 				{
-					"title": "Fuel From Ground",
-					"description": "Collected fuel from the ground",
-					"type": "boolean",
-					"defaultValue": false,
-					"code": "FFG",
+					"title": "Average Cycle Fuel Amount",
+					"description": "The amount of fuel shot at once in teleop",
+					"type": "number",
+					"required": true,
+					"code": "cycleFuelAmount",
 					"formResetBehavior": "reset",
-					"required": false
+					"defaultValue": 0
 				},
 				{
-					"title": "Fuel From Player",
-					"description": "Collected fuel from the human player",
-					"type": "boolean",
-					"defaultValue": false,
-					"code": "FFHP",
-					"formResetBehavior": "reset",
-					"required": false
-				},
-				{
-					"title": "Fuel From Depot",
-					"description": "Collected fuel from the depot",
-					"type": "boolean",
-					"defaultValue": false,
-					"code": "FFD",
-					"formResetBehavior": "reset",
-					"required": false
-				},
-				{
-					"title": "Fuel Scored",
-					"description": "The amount of fuel scored in teleop",
-					"type": "counter",
+					"title": "Average Cycle Time",
+					"description": "The average time it took to complete a cycle (from starting intake -> shooting -> all balls scored) in teleop",
+					"type": "timer",
 					"required": false,
-					"code": "CLOT",
+					"code": "timer",
 					"formResetBehavior": "reset",
 					"defaultValue": 0,
-					"min": 0,
-					"step": 1
+					"outputType": "average"
 				},
 				{
-					"title": "Fuel Dropped/Missed",
-					"description": "Fuel dropped/missed during teleop",
-					"type": "counter",
-					"required": false,
-					"code": "FDT",
-					"formResetBehavior": "reset",
-					"defaultValue": 0,
-					"min": 0,
-					"step": 1
+					"title": "Average Cycle Fuel Scored",
+					"description": "The amount of fuel scored in a cycle in teleop",
+					"type": "number",
+					"required": true,
+					"code": "cycleFuelScored",
+					"formResetBehavior": "increment",
+					"defaultValue": 0
+				},
+				{
+					"title": "Total Cycles for Match",
+					"description": "The total number of cycles completed during the match in teleop",
+					"type": "number",
+					"required": true,
+					"code": "totalCycles",
+					"formResetBehavior": "increment",
+					"defaultValue": 0
 				},
 				{
 					"title": "Crossed Field/Played Defense?",
@@ -365,7 +351,7 @@
 					"required": false,
 					"code": "co",
 					"formResetBehavior": "reset",
-					"defaultValue": "",
+					"defaultValue": "~REMOVE ME~",
 					"min": 0,
 					"max": 100
 				}
