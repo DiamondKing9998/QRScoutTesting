@@ -9,6 +9,7 @@ export interface TBAMatch {
   key: string;
   match_number: number;
   event_key: string;
+  comp_level: string; // 'qm' for qualification, 'ef', 'qf', 'sf', 'f' for playoffs
   alliances: {
     red: {
       team_keys: string[];
@@ -82,7 +83,9 @@ export async function fetchEventMatches(
  * Convert raw TBA matches to schedule format
  */
 export function parseMatchSchedule(matches: TBAMatch[]): MatchScheduleEntry[] {
+  // Only include qualification matches (ignore playoffs)
   return matches
+    .filter(match => (match.comp_level === 'qm') || (match.key && match.key.includes('_qm')))
     .sort((a, b) => a.match_number - b.match_number)
     .map(match => ({
       matchNumber: match.match_number,

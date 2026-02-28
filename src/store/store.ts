@@ -1,6 +1,25 @@
+
+export async function resetToDefaultConfig() {
+  const config = await loadDefaultConfig();
+  setFormData(config);
+}
 import { produce } from 'immer';
 import { cloneDeep } from 'lodash';
-import configJson from '../../public/2026Rebuilt.json';
+
+let configJson: any = null;
+
+export async function loadDefaultConfig(): Promise<Config> {
+  if (!configJson) {
+    const response = await fetch('/QRScoutTesting/2026Rebuilt.json');
+    configJson = await response.json();
+  }
+  const config = configSchema.safeParse(configJson);
+  if (!config.success) {
+    console.error(config.error);
+    throw new Error('Invalid config schema');
+  }
+  return config.data;
+}
 import {
   Config,
   configSchema,
@@ -9,15 +28,6 @@ import {
 import { createStore } from './createStore';
 
 type Result<T> = { success: true; data: T } | { success: false; error: Error };
-
-function getDefaultConfig(): Config {
-  const config = configSchema.safeParse(configJson);
-  if (!config.success) {
-    console.error(config.error);
-    throw new Error('Invalid config schema');
-  }
-  return config.data;
-}
 
 export function getConfig() {
   const configData = cloneDeep(useQRScoutState.getState().formData);
@@ -31,10 +41,8 @@ export interface QRScoutState {
 }
 
 const initialState: QRScoutState = {
-  formData: getDefaultConfig(),
-  fieldValues: getDefaultConfig().sections.flatMap(s =>
-    s.fields.map(f => ({ code: f.code, value: f.defaultValue })),
-  ),
+  formData: {} as Config, // Will be set after loading config
+  fieldValues: [], // Will be set after loading config
   showQR: false,
 };
 
@@ -46,9 +54,7 @@ export const useQRScoutState = createStore<QRScoutState>(
   },
 );
 
-export function resetToDefaultConfig() {
-  useQRScoutState.setState(initialState);
-}
+
 
 export async function fetchConfigFromURL(url: string): Promise<Result<void>> {
   try {

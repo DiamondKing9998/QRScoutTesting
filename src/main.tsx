@@ -2,9 +2,18 @@ import { createRoot } from 'react-dom/client';
 import { App } from './app.tsx';
 import './index.css';
 
-const root = createRoot(document.getElementById('app')!);
 
-root.render(<App />);
+import { loadDefaultConfig, setFormData } from './store/store';
+
+async function startApp() {
+  await loadDefaultConfig().then(config => {
+    setFormData(config);
+  });
+  const root = createRoot(document.getElementById('app')!);
+  root.render(<App />);
+}
+
+startApp();
 
 // Register service worker for offline support
 if ('serviceWorker' in navigator) {
